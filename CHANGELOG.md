@@ -1,8 +1,40 @@
 # CHANGELOG
 
-## [Untagged]
+## [Untagged]
 
 No date
+
+## [0.19.1]
+
+17.04.2021
+
+- Fix for check that `--fetch-full-installer` can be used.
+- Dutch localizations (thanks to Thijs Vught)
+
+## [0.19.0]
+
+07.04.2021
+
+- Output from erase-install.sh is now written to `/var/log/erase-install.sh` in addition to `stdout`.
+- Checks that the supplied user is an admin when performing `--eraseinstall` on M1, which appears to be a requirement (not for `startosinstall` without `--eraseinstall`). If it is not, it promotes the user to admin.
+- Checks that the supplied user is a Volume Owner on M1 (rather than merely having a Secure Token)
+- Runs `diskutil apfs updatePreboot /` prior to `startosinstall` to (experimentally) address a problem seen by some user accounts that were promoted using `Privileges.app`.
+- Adds localization for osascript dialogs
+
+## [0.18.0]
+
+10.03.2021
+
+- Add `--check-power` option. Set this to check for AC power. Also `--power-wait-limit` sets a time limit to wait for power (default is 60 seconds).
+- Merge in upstream changes to `installinstallmacos.py`. This improves download resumption.
+
+## [0.17.4]
+
+03.03.2021
+
+- Default minimum drive space now set to 45GB, but can now be overridden with the `--min-drive-space NN` option.
+- Fixed the `--confirm` option.
+- Improved the `--help` output with more recent keys.
 
 ## [0.17.3]
 
@@ -257,7 +289,11 @@ Thanks to '@ahousseini' for various contributions to this release
 
 - Initial version. Expects a manual choice of installer from `installinstallmacos.py`.
 
-[untagged]: https://github.com/grahampugh/erase-install/compare/v0.16.1...HEAD
+[untagged]: https://github.com/grahampugh/erase-install/compare/v0.19.0...HEAD
+[0.19.0]: https://github.com/grahampugh/erase-install/compare/v0.18.0...v0.19.0
+[0.18.0]: https://github.com/grahampugh/erase-install/compare/v0.17.4...v0.18.0
+[0.17.4]: https://github.com/grahampugh/erase-install/compare/v0.17.3...v0.17.4
+[0.17.3]: https://github.com/grahampugh/erase-install/compare/v0.17.2...v0.17.3
 [0.17.2]: https://github.com/grahampugh/erase-install/compare/v0.17.1...v0.17.2
 [0.17.1]: https://github.com/grahampugh/erase-install/compare/v0.17.0...v0.17.1
 [0.17.0]: https://github.com/grahampugh/erase-install/compare/v0.16.1...v0.17.0
